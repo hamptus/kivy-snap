@@ -1,0 +1,57 @@
+name: kivysnap # you probably want to 'snapcraft register <name>'
+version: '0.1.0' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Single-line elevator pitch for your amazing snap # 79 char long summary
+description: |
+  This is my-snap's description. You have a paragraph or two to tell the
+  most important story about your snap. Keep it under 100 words though,
+  we live in tweetspace and your description wants to look good in the snap
+  store.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  kivysnap:
+    command: bin/wrapper
+    plugs:
+      - opengl
+      - x11
+      - home
+      - unity7
+
+parts:
+  move-src:
+    plugin: dump
+    source: .
+    organize:
+      main.py: bin/kivysnap
+      wrapper: bin/wrapper
+  kivy:
+    # See 'snapcraft plugins'
+    plugin: python
+    build-packages:
+      - gcc
+      - python3-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-mixer-dev
+      - libsdl2-ttf-dev
+      - libportmidi-dev
+      - libswscale-dev
+      - libavformat-dev
+      - libavcodec-dev
+      - zlib1g-dev
+      - libgles2-mesa-dev
+      - pkg-config
+      - libsdl2-gfx-dev
+    stage-packages:
+      - cython3
+      - ffmpeg
+      - libsdl2-2.0-0
+    python-packages:
+      - Cython>=0.24.1
+      - Kivy>=1.9.1
+      - Kivy-Garden>=0.1.4
+      - requests>=2.11.1
+    after:
+      - move-src

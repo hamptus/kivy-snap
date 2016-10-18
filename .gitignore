@@ -87,3 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Snapcraft parts
+*.snap
+prime/
+stage/
