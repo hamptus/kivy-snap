@@ -16,7 +16,6 @@ apps:
     plugs:
       - opengl
       - x11
-      - home
       - unity7
 
 parts:
@@ -27,31 +26,6 @@ parts:
       main.py: bin/kivysnap
       wrapper: bin/wrapper
   kivy:
-    # See 'snapcraft plugins'
-    plugin: python
-    build-packages:
-      - gcc
-      - python3-dev
-      - libsdl2-dev
-      - libsdl2-image-dev
-      - libsdl2-mixer-dev
-      - libsdl2-ttf-dev
-      - libportmidi-dev
-      - libswscale-dev
-      - libavformat-dev
-      - libavcodec-dev
-      - zlib1g-dev
-      - libgles2-mesa-dev
-      - pkg-config
-      - libsdl2-gfx-dev
+    plugin: nil
     stage-packages:
-      - cython3
-      - ffmpeg
-      - libsdl2-2.0-0
-    python-packages:
-      - Cython>=0.24.1
-      - Kivy>=1.9.1
-      - Kivy-Garden>=0.1.4
-      - requests>=2.11.1
-    after:
-      - move-src
+      - python3-kivy
